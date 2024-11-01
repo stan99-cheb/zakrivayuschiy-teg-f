@@ -17,10 +17,15 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
 }
 
-.floppy {
-  color: red;
-  width: 100px;
-  height: 100px;
+@supports (font-variation-settings: normal) {
+  .page {
+    font-family: var(--main-font), Arial, Helvetica, sans-serif;
+  }
 }
