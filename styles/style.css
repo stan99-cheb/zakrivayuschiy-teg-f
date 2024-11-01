@@ -18,3 +18,9 @@
   min-inline-size: 320px;
   min-block-size: 100dvb;
 }
+
+.floppy {
+  color: red;
+  width: 100px;
+  height: 100px;
+}
