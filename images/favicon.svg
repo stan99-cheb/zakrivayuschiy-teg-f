@@ -2,12 +2,12 @@
   <style>
     @media (prefers-color-scheme: dark) {
       :root {
-        fill: white;
+        fill: #00cc14;
       }
     }
     @media (prefers-color-scheme: light) {
       :root {
-        fill: black;
+        fill: #000;
       }
     }
   </style>
