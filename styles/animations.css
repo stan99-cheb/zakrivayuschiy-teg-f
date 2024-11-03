@@ -22,3 +22,7 @@
     left: -16px;
   }
 }
+
+.sparks {
+  opacity: 0;
+}
