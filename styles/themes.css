@@ -13,6 +13,8 @@
     repeating-linear-gradient(to bottom, #d3d3d3 0 2px, rgb(211 211 211 / 0) 2px 4px),
     repeating-linear-gradient(to right, #d3d3d3 0 2px, rgb(211 211 211 / 0) 2px 4px),
     linear-gradient(to bottom, #e7e7e7, #e7e7e7 0.01%, #1a1a1a 100%);
+
+  --button-text-color: var(--background-color);
 }
 
 :root.theme-dark {
@@ -23,6 +25,8 @@
     repeating-linear-gradient(to bottom, #000 0 2px, rgb(0 0 0 / 0) 2px 4px),
     repeating-linear-gradient(to right, #000 0 2px, rgb(0 0 0 / 0) 2px 4px),
     linear-gradient(to bottom, #007f0c, #004306);
+
+  --button-text-color: var(--accent-color);
 }
 
 @media (prefers-color-scheme: light) {
