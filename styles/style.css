@@ -94,18 +94,43 @@
 
   position: relative;
 
+  transition: opacity .3s ease;
   cursor: pointer;
 }
 
+.theme-menu__button::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0%;
+  height: 3px;
+  background-color: var(--accent-color);
+  transition: width .3s ease-in-out;
+}
+
+.theme-menu__button:hover::after,
+.theme-menu__button:focus-visible::after {
+  width: 100%;
+}
+
+.theme-menu__button:disabled {
+  pointer-events: none;
+}
+
+.theme-menu__button:hover,
+.theme-menu__button:focus,
 .theme-menu__button:disabled {
   opacity: .6;
-  pointer-events: none;
+}
+
+.theme-menu__button:focus {
+  outline: none;
 }
 
 .theme-menu__button:disabled::before {
   content: '▶';
   position: absolute;
-  left: -14px;
+  animation: .5s ease-in-out infinite alternate pointer;
 }
 
 .main {
