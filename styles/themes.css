@@ -15,6 +15,7 @@
     linear-gradient(to bottom, #e7e7e7, #e7e7e7 0.01%, #1a1a1a 100%);
 
   --button-text-color: var(--background-color);
+  --heart-contour-color: var(--accent-color);
 }
 
 :root.theme-dark {
@@ -27,6 +28,7 @@
     linear-gradient(to bottom, #007f0c, #004306);
 
   --button-text-color: var(--accent-color);
+  --heart-contour-color: var(--accent-color);
 }
 
 @media (prefers-color-scheme: light) {
