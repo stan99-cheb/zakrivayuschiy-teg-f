@@ -39,23 +39,26 @@
 .header {
   margin: 100px auto;
   max-width: 700px;
-  min-height: 364px;
+  min-height: 368px;
   border: 2px solid var(--accent-color);
   background-color: var(--background-color);
   position: relative;
+
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  grid-template-areas:
+    "."
+    "title"
+    "menu";
 }
 
 .logo-group {
-  margin: auto;
-  position: absolute;
-  inset: 0;
-  width: min-content;
-  height: min-content;
-  white-space: nowrap;
-  text-align: center;
+  grid-area: title;
+  justify-self: center;
 
   font-family: var(--accent-font);
   font-weight: 400;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -71,18 +74,20 @@
 }
 
 .header__theme-menu {
-  margin: 0 auto;
-  width: min-content;
-  position: absolute;
-  right: 0;
-  bottom: 25px;
-  left: 0;
+  grid-area: menu;
+  justify-self: center;
+  align-self: center;
 }
 
 .theme-menu__list {
   display: flex;
   flex-direction: column;
   row-gap: 14px;
+}
+
+.theme-menu__item {
+  font-size: 0;
+  line-height: 0;
 }
 
 .theme-menu__button {
