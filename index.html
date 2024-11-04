@@ -94,7 +94,7 @@
     </ul>
   </main>
   <footer class="footer">
-    <button class="button footer-button" type="button">
+    <button class="button footer-button" type="button" onclick="window['modal'].showModal()" aria-controls="modal">
       <svg class="floppy" width="21" height="21">
         <use xlink:href="svg/floppy.svg#floppy"></use>
       </svg>
@@ -103,6 +103,24 @@
       </span>
     </button>
   </footer>
+
+  <dialog id="modal">
+    <div class="modal-content">
+      <svg class="floppy-modal" width="39" height="39">
+        <use xlink:href="svg/floppy.svg#floppy"></use>
+      </svg>
+      <p>
+        Вставьте дискету, чтобы продолжить
+      </p>
+    </div>
+    <form method="dialog">
+      <button class="button modal-button" type="submit">
+        <span class="button__text">
+          ОК
+        </span>
+      </button>
+    </form>
+  </dialog>
 
   <script type="module" src="./scripts/like.js"></script>
 </body>
