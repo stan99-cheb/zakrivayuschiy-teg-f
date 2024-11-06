@@ -13,7 +13,7 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
 
-@keyframes pointer {
+@keyframes pointer-shift {
   0% {
     left: -20px;
   }
@@ -23,7 +23,7 @@
   }
 }
 
-@keyframes heart {
+@keyframes explosion-heart {
   0% {
     transform: scale(1);
   }
@@ -37,7 +37,7 @@
   }
 }
 
-@keyframes sparks {
+@keyframes sparks-heart {
   0% {
     --heart-sparks-color: transparent;
   }
@@ -80,6 +80,8 @@
 }
 
 .is-liked {
-  animation: heart .3s ease-in .1s 1 normal, sparks .3s ease-in .3s 1 normal;
+  animation:
+    explosion-heart .3s ease-in .1s 1 normal,
+    sparks-heart .3s ease-in .3s 1 normal;
   transform-origin: center;
 }

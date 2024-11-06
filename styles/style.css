@@ -15,16 +15,16 @@
 */
 
 .page {
-  min-inline-size: 320px;
+  min-inline-size: 375px;
   min-block-size: 100dvb;
 
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 22px;
+  font-size: 1.125rem;
+  font-variation-settings: 'wght' var(--text-fw, 400);
+  line-height: 1.375rem;
 
-  background-color: var(--background-color);
-  color: var(--accent-color);
+  color: var(--accent-color, #000);
+  background-color: var(--background-color, #fff);
 
   background-image: var(--background-image);
   background-size: cover;
@@ -40,14 +40,14 @@
 /* КНОПКА */
 
 .button {
-  border: 2px solid var(--accent-color);
+  border: .125rem solid var(--accent-color, #000);
 
-  font-family: var(--accent-font);
-  font-size: 14px;
+  font-family: var(--accent-font), Arial, Helvetica, sans-serif;
+  font-size: .875rem;
   font-weight: 400;
-  line-height: 14px;
+  line-height: .875rem;
 
-  color: var(--button-text-color);
+  color: var(--button-text-color, #fff);
 
   position: relative;
   transition: box-shadow .3s ease;
@@ -56,14 +56,14 @@
 }
 
 .button:focus {
-  box-shadow: 2px 2px 0 var(--accent-color);
+  box-shadow: .125rem .125rem 0 var(--accent-color, #000);
 }
 
 .button::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: var(--accent-color);
+  background-color: var(--accent-color, #000);
   transform: translateX(-100%);
   transition: transform .5s ease-in-out;
 }
@@ -79,11 +79,11 @@
 /* HEADER */
 
 .header {
-  margin: 100px auto;
-  max-width: 700px;
-  min-height: 368px;
-  border: 2px solid var(--accent-color);
-  background-color: var(--background-color);
+  margin: 6.25rem auto;
+  max-inline-size: 43.75rem;
+  min-block-size: 23rem;
+  border: .125rem solid var(--accent-color, #000);
+  background-color: var(--background-color, #fff);
   position: relative;
 
   display: grid;
@@ -98,14 +98,14 @@
   grid-area: title;
   justify-self: center;
 
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), Arial, Helvetica, sans-serif;
   font-weight: 400;
   text-align: center;
   text-transform: uppercase;
 }
 
 .header-link {
-  margin-bottom: 20px;
+  margin-block-end: 1.25rem;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   line-height: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
 
@@ -127,7 +127,7 @@
 .theme-menu__list {
   display: flex;
   flex-direction: column;
-  row-gap: 14px;
+  row-gap: .875rem;
 }
 
 .theme-menu__item {
@@ -136,10 +136,10 @@
 }
 
 .theme-menu__button {
-  font-family: var(--accent-font);
-  font-size: 14px;
+  font-family: var(--accent-font), Arial, Helvetica, sans-serif;
+  font-size: .875rem;
   font-weight: 400;
-  line-height: 14px;
+  line-height: .875rem;
   text-transform: uppercase;
 
   position: relative;
@@ -152,15 +152,15 @@
   content: '';
   position: absolute;
   display: block;
-  width: 0%;
-  height: 2px;
-  background-color: var(--accent-color);
+  inline-size: 0;
+  block-size: .125rem;
+  background-color: var(--accent-color, #000);
   transition: width .3s ease-in-out;
 }
 
 .theme-menu__button:hover::after,
 .theme-menu__button:focus-visible::after {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .theme-menu__button:disabled {
@@ -174,39 +174,38 @@
 }
 
 .theme-menu__button:disabled::before {
-  content: '▶';
+  content: '\25B6';
   position: absolute;
-  animation: pointer .5s ease-in-out infinite alternate;
+  animation: pointer-shift .5s ease-in-out infinite alternate;
 }
 
 .main {
-  margin: 0 auto 100px;
-  max-width: 700px;
+  margin: 0 auto 6.25rem;
+  max-inline-size: 43.75rem;
 }
 
 /* СПИСОК КАРТОЧЕК */
 
 .list {
-  margin-bottom: 50px;
+  margin-block-end: 3.125rem;
   display: flex;
   flex-direction: column;
-  row-gap: 50px;
+  row-gap: 3.125rem;
 }
 
 /* КАРТОЧКА */
 
 .card {
-  border: 2px solid var(--accent-color);
-  width: 100%;
-  background-color: var(--background-color);
+  border: .125rem solid var(--accent-color, #000);
+  inline-size: 100%;
+  background-color: var(--background-color, #fff);
 }
 
 .card__title {
-  padding: 5px 10px;
-  border-bottom: 2px solid var(--accent-color);
+  padding: .3125rem .625rem;
+  border-block-end: .125rem solid var(--accent-color, #000);
 
-  font-size: 18px;
-  line-height: 22px;
+  font-variation-settings: 'wght' var(--title-fw, 700);
 }
 
 .card__img-wrapper {
@@ -214,7 +213,7 @@
 }
 
 .card__img {
-  width: 100%;
+  inline-size: 100%;
   object-fit: cover;
   object-position: right;
   display: block;
@@ -251,51 +250,55 @@
 
 .card__img-wrapper::after {
   content: '</HTML>';
+
   position: absolute;
-  top: 25px;
-  right: 25px;
-  font-family: var(--accent-font);
-  font-size: 14px;
+  inset-block-start: 1.5625rem;
+  inset-inline-end: 1.5625rem;
+
+  font-family: var(--accent-font), Arial, Helvetica, sans-serif;
+  font-size: .875rem;
   font-weight: 400;
-  line-height: 14px;
+  line-height: .875rem;
+
   text-shadow:
-    -1px 0 var(--background-color),
-    0 1px var(--background-color),
-    1px 0 var(--background-color),
-    0 -1px var(--background-color);
+    -0.0625rem 0 var(--background-color, #fff),
+    0 .0625rem var(--background-color, #fff),
+    .0625rem 0 var(--background-color, #fff),
+    0 -0.0625rem var(--background-color, #fff);
+
   mix-blend-mode: hard-light;
   opacity: .5;
 }
 
-@supports ((text-stroke: 1px var(--background-color)) or (-webkit-text-stroke: 1px var(--background-color))) {
+@supports ((text-stroke: 1px var(--background-color, #fff)) or (-webkit-text-stroke: 1px var(--background-color, #fff))) {
   .card__img-wrapper::after {
-    text-stroke: 1px var(--background-color);
-    -webkit-text-stroke: 1px var(--background-color);
+    text-stroke: .0625rem var(--background-color, #fff);
+    -webkit-text-stroke: .0625rem var(--background-color, #fff);
     text-shadow: none;
   }
 }
 
 .card__content {
-  padding: 25px;
-  border-top: 2px solid var(--accent-color);
+  padding: 1.5625rem;
+  border-block-start: .125rem solid var(--accent-color, #000);
 
   display: flex;
   flex-direction: column;
-  row-gap: 25px;
+  row-gap: 1.5625rem;
 }
 
 .card__buttons {
   display: flex;
   align-items: center;
-  column-gap: 8px;
+  column-gap: .5rem;
 
   align-self: flex-end;
 }
 
 .card__icon-button {
-  border: 2px solid transparent;
-  width: 43px;
-  height: 38px;
+  border: .125rem solid transparent;
+  inline-size: 2.6875rem;
+  block-size: 2.375rem;
 
   display: flex;
   justify-content: center;
@@ -303,13 +306,13 @@
 }
 
 .card__icon-button:focus-visible {
-  border-color: 2px solid var(--accent-color);
+  border-color: .125rem solid var(--accent-color, #000);
   transition: border-color .3s ease;
 }
 
 .card__like-button {
-  padding: 10px 17px;
-  width: 130px;
+  padding: .625rem 1.0625rem;
+  inline-size: 8.125rem;
   text-align: center;
 }
 
@@ -320,22 +323,22 @@
 /* КНОПКА НА ПАМЯТЬ */
 
 .memory-wrapper {
-  margin-bottom: 100px;
+  margin-block-end: 6.25rem;
 
   display: flex;
   justify-content: center;
 }
 
 .memory-button {
-  padding: 15px 20px;
+  padding: .9375rem 1.25rem;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: .5rem;
 
-  background-color: var(--background-color);
+  background-color: var(--background-color, #fff);
   cursor: pointer;
 }
 
@@ -346,11 +349,11 @@
 /* МОДАЛЬНОЕ ОКНО */
 
 #modal {
-  padding: 30px;
-  width: 353px;
-  border: 2px solid var(--accent-color);
-  background-color: var(--background-color);
-  color: var(--accent-color);
+  padding: 1.875rem;
+  inline-size: 22.0625rem;
+  border: .125rem solid var(--accent-color, #000);
+  background-color: var(--background-color, #fff);
+  color: var(--accent-color, #000);
 }
 
 #modal::backdrop {
@@ -358,16 +361,14 @@
 }
 
 .modal-content {
-  margin-bottom: 30px;
+  margin-block-end: 1.875rem;
 
   display: flex;
   align-items: center;
-  column-gap: 20px;
+  column-gap: 1.25rem;
 
-  font-family: var(--accent-font);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 22px;
+  font-family: var(--accent-font), Arial, Helvetica, sans-serif;
+  font-size: .875rem;
 }
 
 .modal-icon {
@@ -375,7 +376,7 @@
 }
 
 .modal-button {
-  width: 100%;
-  height: 38px;
-  background-color: var(--background-color);
+  inline-size: 100%;
+  block-size: 2.375rem;
+  background-color: var(--background-color, #fff);
 }

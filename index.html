@@ -325,13 +325,11 @@
         Вставьте дискету, чтобы продолжить
       </p>
     </div>
-    <form method="dialog">
-      <button class="button modal-button" type="submit">
-        <span class="button__text">
-          ОК
-        </span>
-      </button>
-    </form>
+    <button class="button modal-button" onclick="window['modal'].close()">
+      <span class="button__text">
+        ОК
+      </span>
+    </button>
   </dialog>
 
   <script type="module" src="./scripts/like.js"></script>
