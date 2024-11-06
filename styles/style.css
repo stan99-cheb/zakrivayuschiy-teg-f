@@ -221,6 +221,34 @@
   aspect-ratio: 1 / 1;
 }
 
+.filter-contrast {
+  filter: contrast(50%);
+}
+
+.filter-sepia {
+  filter: sepia(50%);
+}
+
+.filter-saturate {
+  filter: saturate(200%);
+}
+
+.filter-difficult {
+  filter: hue-rotate(-200deg) brightness(80%);
+}
+
+.filter-grayscale {
+  filter: grayscale(.9);
+}
+
+.filter-blur {
+  filter: blur(5px);
+}
+
+.filter-invert {
+  filter: invert(.8);
+}
+
 .card__img-wrapper::after {
   content: '</HTML>';
   position: absolute;
