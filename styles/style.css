@@ -28,6 +28,7 @@
 
   background-image: var(--background-image);
   background-size: cover;
+  background-attachment: fixed;
 }
 
 @supports (font-variation-settings: normal) {
@@ -35,6 +36,47 @@
     font-family: var(--main-font), Arial, Helvetica, sans-serif;
   }
 }
+
+/* КНОПКА */
+
+.button {
+  border: 2px solid var(--accent-color);
+
+  font-family: var(--accent-font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+
+  color: var(--button-text-color);
+
+  position: relative;
+  transition: box-shadow .3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button:focus {
+  box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--accent-color);
+  transform: translateX(-100%);
+  transition: transform .5s ease-in-out;
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button__text {
+  mix-blend-mode: difference;
+}
+
+/* HEADER */
 
 .header {
   margin: 100px auto;
@@ -62,13 +104,16 @@
   text-transform: uppercase;
 }
 
-.logo-group p:first-child {
+.header-link {
   margin-bottom: 20px;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   line-height: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+
+  display: inline-block;
+  text-decoration: none;
 }
 
-.logo-group p:last-child {
+.header-title {
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   line-height: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
 }
@@ -108,7 +153,7 @@
   position: absolute;
   display: block;
   width: 0%;
-  height: 3px;
+  height: 2px;
   background-color: var(--accent-color);
   transition: width .3s ease-in-out;
 }
@@ -128,35 +173,40 @@
   opacity: .6;
 }
 
-.theme-menu__button:focus {
-  outline: none;
-}
-
 .theme-menu__button:disabled::before {
   content: '▶';
   position: absolute;
-  animation: .5s ease-in-out infinite alternate pointer;
+  animation: pointer .5s ease-in-out infinite alternate;
 }
 
 .main {
-  margin-bottom: 50px;
+  margin: 0 auto 100px;
+  max-width: 700px;
 }
 
-/* ПОСТЫ */
-.cards {
-  margin: 0 auto;
-  max-width: 700px;
+/* СПИСОК КАРТОЧЕК */
+
+.list {
+  margin-bottom: 50px;
+
   display: flex;
   flex-direction: column;
   row-gap: 50px;
+
   background-color: var(--background-color);
 }
 
-.card {}
+/* КАРТОЧКА */
+
+.card {
+  width: 100%;
+  border: 2px solid var(--accent-color);
+}
 
 .card__title {
   padding: 5px 10px;
-  border: 2px solid var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+
   font-size: 18px;
   line-height: 22px;
 }
@@ -166,12 +216,11 @@
 }
 
 .card__img {
-  border: 2px solid var(--accent-color);
   width: 100%;
   object-fit: cover;
-  object-position: center;
-
+  object-position: right;
   display: block;
+  aspect-ratio: 1 / 1;
 }
 
 .card__img-wrapper::after {
@@ -202,7 +251,7 @@
 
 .card__content {
   padding: 25px;
-  border: 2px solid var(--accent-color);
+  border-top: 2px solid var(--accent-color);
 
   display: flex;
   flex-direction: column;
@@ -219,6 +268,12 @@
 
 .card__icon-button {
   border: 2px solid transparent;
+  width: 43px;
+  height: 38px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card__icon-button:focus-visible {
@@ -226,57 +281,26 @@
   transition: border-color .3s ease;
 }
 
-.button {
-  border: 2px solid var(--accent-color);
-
-  font-family: var(--accent-font);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 14px;
-
-  color: var(--button-text-color);
-  position: relative;
-  transition: box-shadow .3s ease;
-  overflow: hidden;
-}
-
-.button:focus {
-  box-shadow: 2px 2px 0 var(--accent-color);
-}
-
-.button::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: var(--accent-color);
-  transform: translateX(-100%);
-  transition: transform .5s ease-in-out;
-}
-
-.button:hover::before {
-  transform: translateX(0);
-}
-
 .card__like-button {
-  padding: 10px 35px;
+  padding: 10px 17px;
+  width: 130px;
+  text-align: center;
 }
 
 .like-icon {
   display: block;
 }
 
-.button__text {
-  mix-blend-mode: difference;
-}
+/* КНОПКА НА ПАМЯТЬ */
 
-.footer {
+.memory-wrapper {
   margin-bottom: 100px;
 
   display: flex;
   justify-content: center;
 }
 
-.footer-button {
+.memory-button {
   padding: 15px 20px;
 
   display: flex;
@@ -289,9 +313,11 @@
   cursor: pointer;
 }
 
-.floppy {
+.memory-icon {
   mix-blend-mode: difference;
 }
+
+/* МОДАЛЬНОЕ ОКНО */
 
 #modal {
   padding: 30px;
@@ -318,7 +344,7 @@
   line-height: 22px;
 }
 
-.floppy-modal {
+.modal-icon {
   flex: 1 0 auto;
 }
 
