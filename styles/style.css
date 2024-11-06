@@ -188,19 +188,17 @@
 
 .list {
   margin-bottom: 50px;
-
   display: flex;
   flex-direction: column;
   row-gap: 50px;
-
-  background-color: var(--background-color);
 }
 
 /* КАРТОЧКА */
 
 .card {
-  width: 100%;
   border: 2px solid var(--accent-color);
+  width: 100%;
+  background-color: var(--background-color);
 }
 
 .card__title {
