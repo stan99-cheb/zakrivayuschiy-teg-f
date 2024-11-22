@@ -19,7 +19,7 @@
 
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.125rem;
-  font-variation-settings: 'wght' var(--text-fw, 400);
+  font-weight: 400;
   line-height: 1.3125rem;
 
   color: var(--accent-color, #000);
@@ -33,6 +33,7 @@
 @supports (font-variation-settings: normal) {
   .page {
     font-family: var(--main-font), Arial, Helvetica, sans-serif;
+    font-variation-settings: 'wght' var(--text-fw, 400);
   }
 }
 
@@ -51,8 +52,6 @@
   position: relative;
   transition: box-shadow .3s ease;
   overflow: hidden;
-  cursor: pointer;
-  appearance: none;
 }
 
 .button:hover::before {
@@ -87,7 +86,7 @@
 
 .header-link {
   margin-block-end: 1.25rem;
-  padding-block-start: 8.5rem;
+  padding-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
 
   display: block;
 
@@ -106,14 +105,14 @@
   font-family: var(--accent-font), Arial, Helvetica, sans-serif;
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   font-weight: 400;
-  line-height: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  line-height: 1;
   text-align: center;
   text-transform: uppercase;
 }
 
 .header__theme-menu {
   margin: 0 auto 1.5625rem;
-  padding-left: 1.25rem;
+  padding-inline-start: 1.25rem;
   inline-size: min-content;
 }
 
@@ -132,7 +131,7 @@
   font-family: var(--accent-font), Arial, Helvetica, sans-serif;
   font-size: .875rem;
   font-weight: 400;
-  line-height: .875rem;
+  line-height: 1;
   text-transform: uppercase;
 
   position: relative;
@@ -168,7 +167,7 @@
   block-size: .125rem;
 
   background-color: var(--accent-color, #000);
-  transition: width .3s ease-in-out;
+  transition: inline-size .3s ease-in-out;
 }
 
 .theme-menu__button:disabled::before {
@@ -196,7 +195,13 @@
   padding: .3125rem .625rem;
   border-block-end: .125rem solid var(--accent-color, #000);
 
-  font-variation-settings: 'wght' var(--title-fw, 700);
+  font-weight: 700;
+}
+
+@supports (font-variation-settings: normal) {
+  .card__title {
+    font-variation-settings: 'wght' var(--title-fw, 700);
+  }
 }
 
 .content__figure {
@@ -215,12 +220,12 @@
 .content__figure-caption {
   position: absolute;
   inset-block-start: 1.5rem;
-  inset-inline-end: 1.5625rem;
+  inset-inline-end: 1.5rem;
 
   font-family: var(--accent-font), Arial, Helvetica, sans-serif;
   font-size: .875rem;
   font-weight: 400;
-  line-height: .875rem;
+  line-height: 1;
 
   text-shadow:
     -0.0625rem 0 var(--background-color, #fff),
@@ -232,9 +237,8 @@
   opacity: .5;
 }
 
-@supports ((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
+@supports (-webkit-text-stroke: 1px #fff) {
   .content__figure-caption {
-    text-stroke: .0625rem var(--background-color, #fff);
     -webkit-text-stroke: .0625rem var(--background-color, #fff);
     text-shadow: none;
   }
@@ -271,16 +275,14 @@
 .card__content {
   padding: 1.5625rem;
   border-block-start: .125rem solid var(--accent-color, #000);
-}
 
-.card__content>p:not(:last-of-type) {
-  margin-block-end: 1.6875rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
 }
 
 .card__buttons {
-  margin-left: auto;
-  padding-block-start: 1.5625rem;
-  width: min-content;
+  align-self: flex-end;
 
   display: flex;
   align-items: center;
@@ -293,13 +295,13 @@
   block-size: 2.375rem;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
+  place-items: center;
+
+  transition: border-color .3s ease;
 }
 
 .card__icon-button:focus-visible {
   border-color: var(--accent-color, #000);
-  transition: border-color .3s ease;
 }
 
 .card__like-button {
@@ -310,8 +312,8 @@
 
 .like-icon {
   display: block;
-  width: 39px;
-  height: 36px;
+  inline-size: 39px;
+  block-size: 36px;
 }
 
 /* КНОПКА НА ПАМЯТЬ */
@@ -322,24 +324,26 @@
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  place-items: center;
   gap: .5rem;
 
   background-color: var(--background-color, #fff);
-  cursor: pointer;
 }
 
 .memory-icon {
-  width: 21px;
-  height: 21px;
+  inline-size: 21px;
+  block-size: 21px;
   mix-blend-mode: difference;
 }
 
 /* МОДАЛЬНОЕ ОКНО */
 
 .modal {
-  padding: 1.875rem;
+  min-inline-size: 23.4375rem;
+}
+
+.modal[open] {
+  padding: clamp(1.875rem, 2.8891rem + -1.1268vw, 2.625rem);
   inline-size: 22.125rem;
   border: .125rem solid var(--accent-color, #000);
   background-color: var(--background-color, #fff);
@@ -363,8 +367,8 @@
 }
 
 .modal-icon {
-  width: 39px;
-  height: 39px;
+  inline-size: 39px;
+  block-size: 39px;
   flex: 1 0 auto;
 }
 
@@ -373,29 +377,4 @@
   inline-size: 100%;
   block-size: 2.375rem;
   background-color: var(--background-color, #fff);
-}
-
-@media (max-width: 375px) {
-  .header-link {
-    padding-block-start: 7.5rem;
-  }
-
-  .content__figure-caption {
-    inset-inline-end: .6875rem;
-  }
-
-  .memory-button {
-    padding: .9375rem 1.25rem;
-    inline-size: 19.375rem;
-  }
-
-  .modal {
-    padding: 1.875rem 2.5rem;
-    min-inline-size: 21.3125rem;
-  }
-
-  .memory-icon {
-    width: 1.75rem;
-    height: 1.75rem;
-  }
 }

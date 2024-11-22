@@ -14,40 +14,32 @@
 */
 
 @keyframes pointer-shift {
-  0% {
+  from {
     left: -20px;
   }
 
-  100% {
+  to {
     left: -16px;
   }
 }
 
 @keyframes explosion-heart {
-  0% {
+  from {
     transform: scale(1);
   }
 
-  50% {
+  to {
     transform: scale(1.5);
-  }
-
-  100% {
-    transform: scale(1);
   }
 }
 
 @keyframes sparks-heart {
-  0% {
+  from {
     --heart-sparks-color: transparent;
   }
 
-  50% {
+  to {
     --heart-sparks-color: #f00;
-  }
-
-  100% {
-    --heart-sparks-color: transparent;
   }
 }
 
@@ -73,7 +65,7 @@
   --heart-core-color: #f00;
 }
 
-.like-icon.is-liked {
+.is-liked {
   --heart-contour-color: #f00;
   --heart-body-color: #f00;
   --heart-core-color: #f00;

@@ -15,7 +15,7 @@
   --text-fw: 400;
   --button-text-color: var(--background-color, #fff);
 
-  --heart-contour-color: var(--accent-color);
+  --heart-contour-color: var(--accent-color, #000);
   --heart-body-color: transparent;
   --heart-core-color: transparent;
   --heart-sparks-color: transparent;
